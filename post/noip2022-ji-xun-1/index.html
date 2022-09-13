@@ -1,0 +1,497 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>NOIP2022多校集训 Day 1 - f2021ljh&#39;s blog</title>
+<link rel="shortcut icon" href="https://f2021ljh.github.io/favicon.ico">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css">
+<link rel="stylesheet" href="https://f2021ljh.github.io/media/css/tailwind.css">
+<link rel="stylesheet" href="https://f2021ljh.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="NOIP2022多校集训 Day 1 - f2021ljh&#39;s blog - Atom Feed" href="https://f2021ljh.github.io/atom.xml">
+
+    
+
+  <meta name="description" content="基础算法
+二分
+以 O(log⁡2N)O(\log_2 N)O(log2​N) 的时间实现 在一个 有序 数组中查找一个特定元素。
+【基本模板】
+
+整数二分
+
+int l = 0, r = MAXN + 1, mid, ans;
+while..." />
+  <meta property="og:title" content="NOIP2022多校集训 Day 1 - f2021ljh&#39;s blog">
+  <meta property="og:description" content="基础算法
+二分
+以 O(log⁡2N)O(\log_2 N)O(log2​N) 的时间实现 在一个 有序 数组中查找一个特定元素。
+【基本模板】
+
+整数二分
+
+int l = 0, r = MAXN + 1, mid, ans;
+while..." />
+  <meta property="og:type" content="articles">
+  <meta property="og:url" content="https://f2021ljh.github.io/post/noip2022-ji-xun-1/" />
+  <meta property="og:image" content="https://f2021ljh.github.io/images/avatar.png">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:width" content="1200">
+  <meta name="twitter:title" content="NOIP2022多校集训 Day 1 - f2021ljh&#39;s blog">
+  <meta name="twitter:description" content="基础算法
+二分
+以 O(log⁡2N)O(\log_2 N)O(log2​N) 的时间实现 在一个 有序 数组中查找一个特定元素。
+【基本模板】
+
+整数二分
+
+int l = 0, r = MAXN + 1, mid, ans;
+while...">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://f2021ljh.github.io/post/noip2022-ji-xun-1/">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+ 
+  
+    <link rel="stylesheet" href="https://f2021ljh.github.io/media/css/prism-atom-dark.css">
+  
+
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+  
+</head>
+
+<body>
+  <div class="antialiased flex flex-col min-h-screen" id="app">
+    <a href="https://f2021ljh.github.io" class="fixed top-0 left-0 mt-4 bg-black text-white dark:text-gray-700 dark:bg-yellow-50 dark:hover:bg-black dark:hover:text-white inline-flex p-2 pl-8 hover:text-gray-700 hover:bg-yellow-50 font-bold z-10 transition-fast animated fadeInLeft">
+      f2021ljh&#39;s blog
+    </a>
+    <div class="max-w-4xl w-full mx-auto">
+      <div class="shadow-box bg-white dark:bg-gray-600 rounded-lg pt-32 md:pt-64 px-4 md:px-8 pb-8 animated fadeIn mb-8">
+        <h1 class="text-5xl font-semibold leading-normal pb-8 mb-8 border-b-8 border-gray-700">
+          NOIP2022多校集训 Day 1
+        </h1>
+        
+        <div class="mb-8 flex flex-wrap">
+          <div class="text-gray-400 text-sm mr-4">2022-07-17 · 7 min read</div>
+          
+            <a href="https://f2021ljh.github.io/tag/fmUth0dBiY/" class="text-gray-700 text-sm border-b-2 border-dotted border-gray-200 hover:border-gray-600 transition-all duration-100 inline-flex mr-2">
+              <i class="ri-hashtag"></i>
+              集训
+            </a>
+          
+        </div>
+        <div class="markdown mb-8" v-pre>
+          <h2 id="基础算法">基础算法</h2>
+<h3 id="二分">二分</h3>
+<p>以 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><msub><mi>log</mi><mo>⁡</mo><mn>2</mn></msub><mi>N</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(\log_2 N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mop"><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.20696799999999996em;"><span style="top:-2.4558600000000004em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.24414em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span> 的时间实现 在一个 <em><strong>有序</strong></em> 数组中查找一个特定元素。</p>
+<p>【基本模板】</p>
+<ul>
+<li>整数二分</li>
+</ul>
+<pre><code class="language-cpp">int l = 0, r = MAXN + 1, mid, ans;
+while (l &lt; r) {
+	mid = (l + r) &gt;&gt; 1;
+	if (check(mid)) l = mid + 1;
+	else r = mid;
+}
+ans = l - 1;
+</code></pre>
+<ul>
+<li>浮点二分</li>
+</ul>
+<pre><code class="language-cpp">double l = 0, r = MAXN, mid, ans, epsilon; //epsilon: precision
+while (r - l &gt; epsilon) {
+	mid = (l + r) / 2;
+	if (check(mid)) l = mid;
+	else r = mid;
+}
+ans = l;
+</code></pre>
+<h3 id="三分">三分</h3>
+<p>在函数满足 <em><strong>单峰（上凸）或单谷（下凹）</strong></em> 的情况下求极值的算法。</p>
+<p>时间复杂度 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>log</mi><mo>⁡</mo><mi>N</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(\log N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span> 。</p>
+<p>【基本模板】</p>
+<pre><code class="language-cpp">double l = 0, r = MAXN, p, q, epsilon; //p, q: 三等分点
+while (r - l &gt; epsilon) {
+	p = (2 * l + r) / 3, q = (l + 2 * r) / 3;
+	if (f(p) &gt; f(q)) r = q;
+	else l = p;
+}
+</code></pre>
+<h3 id="分治">分治</h3>
+<p>对于一个规模为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span> 的问题，若该问题可以容易地解决（<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span> 较小），则直接将其解决，否则将其分解为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span></span></span></span> 个规模较小的子问题，这些子问题 <strong>互相独立</strong> 且与原问题 <strong>形式相同</strong> ，递归解决这些子问题，然后将各个子问题的解合并，得到原问题的解。</p>
+<p>时间复杂度 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>N</mi><mi>log</mi><mo>⁡</mo><mi>N</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(N\log N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span> 。</p>
+<p>【基本模板】</p>
+<p>归并排序</p>
+<pre><code class="language-cpp">void mergeSort(int l, int r) {
+	if (l == r) return;
+	int mid = (l + r) &gt;&gt; 1;
+	mergeSort(l, mid), mergeSort(mid + 1, r);
+	int li = l, ri = mid + 1, t = l;
+	while (li &lt;= mid &amp;&amp; ri &lt;= r) {
+		if (a[li] &lt;= a[ri]) b[t++] = a[li++];
+		else b[t++] = a[ri++];
+	}
+	while (li &lt;= mid) b[t++] = a[li++];
+	while (ri &lt;= r) b[t++] = a[ri++];
+	for (int i = l; i &lt;= r; i++) a[i] = b[i];
+}
+</code></pre>
+<p>【应用】<a href="https://www.luogu.com.cn/problem/P1908">P1908 逆序对</a></p>
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+using namespace std;
+const int N = 5e5+10;
+int n, a[N], b[N];
+long long cnt;
+
+void mergeSort(int l, int r) {
+	if (l == r) return;
+	int mid = (l + r) &gt;&gt; 1;
+	mergeSort(l, mid), mergeSort(mid + 1, r);
+	int li = l, ri = mid + 1, t = l;
+	while (li &lt;= mid &amp;&amp; ri &lt;= r) {
+		if (a[li] &lt;= a[ri]) b[t++] = a[li++];
+		else b[t++] = a[ri++], cnt += mid - li + 1;
+	}
+	while (li &lt;= mid) b[t++] = a[li++];
+	while (ri &lt;= r) b[t++] = a[ri++], cnt += mid - li + 1;
+	for (int i = l; i &lt;= r; i++) a[i] = b[i];
+}
+
+
+int main() {
+//	freopen(&quot;P1908_6.in&quot;, &quot;r&quot;, stdin);
+	
+	scanf(&quot;%d&quot;, &amp;n);
+	for (int i = 1; i &lt;= n; i++) scanf(&quot;%d&quot;, &amp;a[i]);
+	mergeSort(1, n);
+	printf(&quot;%d\n&quot;, cnt);
+	return 0;
+}
+</code></pre>
+<h3 id="哈希">哈希</h3>
+<p>所谓哈希，就是把一个非常大的取值空间，<strong>映射</strong> 到一个有限域，使得可以快速查询。一般性的哈希需要满足两个特征， <em><strong>不可逆</strong></em> 和 <em><strong>无冲突</strong></em> 。当然这种理想情况是不存在的，所以我们只需要尽量满足，难以取得原值，难以构造冲突即可。</p>
+<p>在信息学竞赛中我们很少用到加密算法，所以我们只需要满足构造一种映射，使得尽量不会重复映射即可。</p>
+<ol>
+<li>整数哈希</li>
+</ol>
+<p>我们可以对每一个取模结果开一个链表，每次出现余数为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span></span></span></span> 的情况就在对应的表头下接入一个新的元素。</p>
+<p>每次查询的复杂度是 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><msub><mtext mathvariant="italic">len</mtext><mi>k</mi></msub><mo>)</mo></mrow><annotation encoding="application/x-tex">O(\textit{len}_k)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord text"><span class="mord textit">len</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span> 的，其中 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mtext mathvariant="italic">len</mtext><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">\textit{len}_k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord text"><span class="mord textit">len</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span></span></span></span> 对应的链表长度。一般情况下可以看做 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mn>1</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span>。</p>
+<ol start="2">
+<li>字符串哈希</li>
+</ol>
+<p>【基本模板】</p>
+<pre><code class="language-cpp">int const base = 131, MOD = 1e9 + 7;
+int ha[N], pw[N]; //ha[i]: 前缀串str[1..i]的哈希值 pw[i]: pow(base, i)
+
+int cal (int l, int r) { //子串str[l..r]的哈希值
+	return MOD + (ha[r] - ha[l - 1] * pw[r - l + 1]) % MOD;
+}
+
+void makeHash() {
+	for (int i = 1; i &lt; n; i++) {
+		ha[i] = (ha[i - 1] * base + str[i]) % MOD;
+		pw[i] = pw[i - 1] * base % MOD;
+	}
+}
+</code></pre>
+<p>当然，这种哈希值冲突太严重了，我们一般采用双 <code>MOD</code> 双 <code>base</code>，计算出两套哈希值，满足两套哈希都相等才认为两个子串相等。</p>
+<h3 id="离散化">离散化</h3>
+<p>对于一些序列我们 <strong>只关注数字的大小关系</strong> 的问题，我们可以将数字变成一个有限区间里的数，从而减低时间复杂度。</p>
+<p>【基本模板】</p>
+<p>使用 C++ stl 库中的 <code>map</code>：</p>
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;map&gt;
+using namespace std;
+int n, a[N], tot, x;
+map&lt;int, int&gt; mp;
+signed main() {
+	
+	scanf(&quot;%d&quot;, &amp;n);
+	for (int i = 1; i &lt;= n; i++) {
+		scanf(&quot;%d&quot;, &amp;a[i]);
+		mp[a[i]] = 0;
+	}
+	for (auto it: mp) { //离散后每个数映射的编号
+		it.second = ++tot;
+	}
+	while (1) { //查询某个数的编号
+		scanf(&quot;%d&quot;, &amp;x);
+		//相当于mp.find(x), 每次调用时间 O(logN)
+		printf(&quot;%d\n&quot;, mp[x]);
+	}
+
+	return 0;
+}
+</code></pre>
+<h3 id="位运算">位运算</h3>
+<ul>
+<li>一些奇技淫巧：</li>
+</ul>
+<ol>
+<li>把 <code>*2</code> 替换成 <code>&lt;&lt;1</code>，<code>/2</code> 替换成 <code>&gt;&gt;1</code>，其他同理。</li>
+<li>找一个数最低的是1的位：<code>#define lowbit(x) (x &amp; (-x))</code></li>
+<li>循环1的个数次：<code>for (int x; x; x &amp;= x - 1);</code></li>
+<li>交换两个数：<code>a ^= b, b ^= a, a ^= b;</code></li>
+</ol>
+<ul>
+<li>
+<p>对于一些可能需要开多位的 <code>bool</code> 类型的问题，我们可以把这些 <code>bool</code> 类型当作二进制压成一个数字表示，这样就可以方便操作。<strong>状压 dp</strong> 就是一个典型类型。</p>
+</li>
+<li>
+<p>对于一些二维 dp，维护关于 <strong>0/1可能性</strong> 的问题，可以用 <strong><code>bitset</code></strong> 优化。实质上，就是把这些对应的每 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>32</mn></mrow><annotation encoding="application/x-tex">32</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">3</span><span class="mord">2</span></span></span></span> 个 0/1 压位成一个 <code>int</code> 储存，这样空间常数就会除掉 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>32</mn></mrow><annotation encoding="application/x-tex">32</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">3</span><span class="mord">2</span></span></span></span>；转移也可以通过位运算实现，这样时间复杂度就会除以 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>32</mn></mrow><annotation encoding="application/x-tex">32</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">3</span><span class="mord">2</span></span></span></span>。</p>
+</li>
+</ul>
+<h3 id="生成随机数">*生成随机数</h3>
+<p><a href="https://www.luogu.com.cn/blog/f2021ljh/guan-yu-sui-ji-shu">关于随机数</a></p>
+<p>生成随机实数代码：</p>
+<pre><code class="language-cpp">#include &lt;cstdio&gt;
+#include &lt;random&gt;
+using namespace std;
+typedef double db;
+
+random_device R; //定义生成种子的类
+mt19937 gen(R()); //定义生成随机数的类
+inline db dbrand(db l, db r) {
+    uniform_real_distribution&lt;&gt; dis(l,r); //生成随机实数的范围
+    return dis(gen);
+}
+
+int main() {
+    int n;
+    db l, r;
+    scanf(&quot;%d%lf%lf&quot;, &amp;n, &amp;l, &amp;r);
+    putchar('\n');
+    for (int i = 1; i &lt;= n; i++)
+        printf(&quot;%.6lf%c&quot;, dbrand(l, r), &quot;\n &quot;[(bool)(i % 10)]); //每10个一换行
+    return 0;
+}
+</code></pre>
+<h3 id="模拟退火simulate-anneal-sa">模拟退火(Simulate Anneal, SA)</h3>
+<p><a href="https://f2021ljh.github.io/post/simulated-annealing/">关于模拟退火 - f2021ljh's blog</a></p>
+
+        </div>
+        <!-- Share to Twitter, Weibo, Telegram -->
+        <div class="flex items-center">
+          <div class="mr-4 flex items-center">
+            <i class="ri-share-forward-line text-gray-500"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-blue-500 hover:bg-blue-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTwitter">
+            <i class="ri-twitter-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-red-500 hover:bg-red-100 dark:hover:bg-gray-600 inline-flex" @click="shareToWeibo">
+            <i class="ri-weibo-line"></i>
+          </div>
+          <div class="px-4 cursor-pointer text-indigo-500 hover:bg-indigo-100 dark:hover:bg-gray-600 inline-flex" @click="shareToTelegram">
+            <i class="ri-telegram-line"></i>
+          </div>
+        </div>
+      </div>
+
+      
+
+      
+
+      <footer class="py-12 text-center px-4 md:px-0" v-pre>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</footer>
+    </div>
+
+    <!-- TOC Container -->
+    <div class="fixed right-0 bottom-0 mb-16 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white dark:bg-gray-500 dark:text-gray-200 hover:shadow-lg transition-all animated fadeInRight" @click="showToc = true">
+      <i class="ri-file-list-line"></i>
+    </div>
+
+    <div class="fixed right-0 top-0 bottom-0 overflow-y-auto w-64 bg-white dark:bg-gray-800 p-4 border-l border-gray-100 dark:border-gray-600 z-10 transition-fast" :class="{ '-mr-64': !showToc }">
+      <div class="flex mb-4 justify-end">
+        <div class="w-8 h-8 inline-flex justify-center items-center rounded-full cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600 transition-fast" @click="showToc = false">
+          <i class="ri-close-line text-lg"></i>
+        </div>
+      </div>
+      <div class="post-toc-container">
+        <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95">基础算法</a>
+<ul>
+<li><a href="#%E4%BA%8C%E5%88%86">二分</a></li>
+<li><a href="#%E4%B8%89%E5%88%86">三分</a></li>
+<li><a href="#%E5%88%86%E6%B2%BB">分治</a></li>
+<li><a href="#%E5%93%88%E5%B8%8C">哈希</a></li>
+<li><a href="#%E7%A6%BB%E6%95%A3%E5%8C%96">离散化</a></li>
+<li><a href="#%E4%BD%8D%E8%BF%90%E7%AE%97">位运算</a></li>
+<li><a href="#%E7%94%9F%E6%88%90%E9%9A%8F%E6%9C%BA%E6%95%B0">*生成随机数</a></li>
+<li><a href="#%E6%A8%A1%E6%8B%9F%E9%80%80%E7%81%ABsimulate-anneal-sa">模拟退火(Simulate Anneal, SA)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+      </div>
+    </div>
+
+    <!-- Back to top -->
+    <div class="fixed right-0 bottom-0 mb-4 mr-4 shadow w-8 h-8 rounded-full flex justify-center items-center z-10 cursor-pointer bg-white hover:shadow-lg transition-all dark:bg-gray-500 dark:text-gray-200" @click="backToUp" v-show="scrolled">
+      <i class="ri-arrow-up-line"></i>
+    </div>
+  </div>
+
+  <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+  <!-- Background of PhotoSwipe. 
+        It's a separate element as animating opacity is faster than rgba(). -->
+  <div class="pswp__bg">
+  </div>
+  <!-- Slides wrapper with overflow:hidden. -->
+  <div class="pswp__scroll-wrap">
+    <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+    <div class="pswp__container">
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+      <div class="pswp__item">
+      </div>
+    </div>
+    <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+    <div class="pswp__ui pswp__ui--hidden">
+      <div class="pswp__top-bar">
+        <!--  Controls are self-explanatory. Order can be changed. -->
+        <div class="pswp__counter">
+        </div>
+        <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+        <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+        <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+        <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+        <!-- element will get class pswp__preloader--active when preloader is running -->
+        <div class="pswp__preloader">
+          <div class="pswp__preloader__icn">
+            <div class="pswp__preloader__cut">
+              <div class="pswp__preloader__donut">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+        <div class="pswp__share-tooltip">
+        </div>
+      </div>
+      <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+      </button>
+      <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+      </button>
+      <div class="pswp__caption">
+        <div class="pswp__caption__center">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://f2021ljh.github.io/media/scripts/main.js"></script>
+  
+  <!-- Code Highlight -->
+  
+    <script src="https://f2021ljh.github.io/media/prism.js"></script>
+    <script>
+      Prism.highlightAll()
+    </script>
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+  <script>
+    //拿到预览框架，也就是上面的html代码
+    var pswpElement = document.querySelectorAll('.pswp')[0];
+    //定义图片数组变量
+    var imgitems;
+    /**
+    * 用于显示预览界面
+    * @param index 图片数组下标
+    */
+    function viewImg(index) {
+      //其它选项这里不做过多阐述，详情见官网
+      var pswpoptions = {
+        index: parseInt(index, 10), // 开始幻灯片索引。0是第一张幻灯片。必须是整数，而不是字符串。
+        bgOpacity: 0.7, // 背景透明度，0-1
+        maxSpreadZoom: 3, // 缩放级别，不要太大
+      };
+      //初始化并打开PhotoSwipe，pswpElement对应上面预览框架，PhotoSwipeUI_Default为皮肤，imgitems为图片数组，pswpoptions为选项
+      var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, imgitems, pswpoptions);
+      gallery.init()
+    }
+    /**
+    * 用于添加图片点击事件
+    * @param img 图片元素
+    * @param index 所属下标（在imgitems中的位置）
+    */
+    function addImgClick(img, index) {
+      img.onclick = function() {
+        viewImg(index)
+      }
+    }
+    /**
+    * 轮询所有图片，获取src、width、height等数据，加入imgitems，并给图片元素添加事件
+    * 最好在onload中执行该方法，本站因放在最底部，所以直接初始化
+    * 异步加载图片可在图片元素创建完成后调用此方法
+    */
+    function initImg() {
+      //重置图片数组
+      imgitems = [];
+      //查找class:markdown 下的所有img元素并遍历
+      var imgs = document.querySelectorAll('.markdown img');
+      for (var i = 0; i < imgs.length; i++) {
+        var img = imgs[i];
+        //本站相册初始为loading图片，真实图片放在data-src
+        var ds = img.getAttribute("data-src");
+        //创建image对象，用于获取图片宽高
+        var imgtemp = new Image();
+        //判断是否存在data-src
+        if (ds != null && ds.length > 0) {
+          imgtemp.src = ds
+        } else {
+          imgtemp.src = img.src
+        }
+        //判断是否存在缓存
+        if (imgtemp.complete) {
+          var imgobj = {
+            "src": imgtemp.src,
+            "w": imgtemp.width,
+            "h": imgtemp.height,
+          };
+          imgitems[i] = imgobj;
+          addImgClick(img, i);
+        } else {
+          console.log('进来了2')
+          imgtemp.index = i;
+          imgtemp.img = img;
+          imgtemp.onload = function() {
+            var imgobj = {
+              "src": this.src,
+              "w": this.width,
+              "h": this.height,
+            };
+            //不要使用push，因为onload前后顺序会不同
+            imgitems[this.index] = imgobj
+            //添加点击事件
+            addImgClick(this.img, this.index);
+          }
+        }
+      }
+    }
+    //初始化
+    initImg();
+  </script>
+  
+  
+</body>
+
+</html>
